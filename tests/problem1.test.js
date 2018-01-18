@@ -18,6 +18,12 @@
 const p = require('../utils.js');
 
 describe('problem1', () => {
+
+    function negation(promise) { 
+        return promise
+            .then((data)=>Promise.reject(data),(data)=>Promise.resolve(data))
+    }
+
     it('negates resolved promises', (done) => {
         negation(p.resolveWith(1).after(10))
             .catch(err => {

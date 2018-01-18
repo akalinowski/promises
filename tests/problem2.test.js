@@ -25,6 +25,20 @@
 const p = require('../utils.js');
 
 describe('problem2', () => {
+     var attempt = async (arr)=>{
+        var f = arr.shift();
+        try {
+            return await f();
+        } catch(er) {
+            if (arr.length) {
+                return attempt(arr);
+            } else {
+                throw er;
+            }
+        }            
+    }
+
+
     it('properly resolves with just one promise', async () => {
         const result = await attempt([
             () => p.resolveWith(1).after(10)

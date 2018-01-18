@@ -26,6 +26,23 @@
 const p = require('../utils.js');
 
 describe('problem3', () => {
+
+    function first(promises) {
+        let errors = [];        
+        let i;
+
+        for(i=0; i < promises; i++) {
+            promises[i].then((data)=>Promise.reject(data),(data)=>Promise.resolve(data));
+        }
+
+        Promise.all(promises).then(values=>{
+            return 
+        },err=>{
+
+        })
+
+    }
+
     it('resolves to first resolved value', async () => {
         const result = await first([
             p.resolveWith(1).after(50),
